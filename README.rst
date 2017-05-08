@@ -8,89 +8,73 @@ Open vSwitch
 .. image:: https://travis-ci.org/openvswitch/ovs.png
     :target: https://travis-ci.org/openvswitch/ovs
 
-What is Open vSwitch?
+什么事 Open vSwitch？
 ---------------------
 
-Open vSwitch is a multilayer software switch licensed under the open source
-Apache 2 license.  Our goal is to implement a production quality switch
-platform that supports standard management interfaces and opens the forwarding
-functions to programmatic extension and control.
+Open vSwitch 是一个基于Apache 2 license的多层软件交换机。
+我们的目标是实现一个支持标准管理接口的，开放转发功能以支持编程扩展和控制的交换机平台。
 
-Open vSwitch is well suited to function as a virtual switch in VM environments.
-In addition to exposing standard control and visibility interfaces to the
-virtual networking layer, it was designed to support distribution across
-multiple physical servers.  Open vSwitch supports multiple Linux-based
-virtualization technologies including Xen/XenServer, KVM, and VirtualBox.
+Open vSwitch 非常适合在VM环境中用作虚拟交换机。
+除了将标准控制和可视化接口暴露给虚拟网络层外，它还旨在支持跨越多个物理服务器的分布式系统。
+Open vSwitch 支持多种基于Linux的虚拟化技术，包括 Xen/XenServer, KVM, 及 VirtualBox。
 
-The bulk of the code is written in platform-independent C and is easily ported
-to other environments.  The current release of Open vSwitch supports the
-following features:
+大部分代码是平台无关的C编码，可以轻松地移植到其他环境中。
+当前版本的 Open vSwitch 支持以下功能：
 
-- Standard 802.1Q VLAN model with trunk and access ports
-- NIC bonding with or without LACP on upstream switch
-- NetFlow, sFlow(R), and mirroring for increased visibility
-- QoS (Quality of Service) configuration, plus policing
-- Geneve, GRE, VXLAN, STT, and LISP tunneling
-- 802.1ag connectivity fault management
-- OpenFlow 1.0 plus numerous extensions
-- Transactional configuration database with C and Python bindings
-- High-performance forwarding using a Linux kernel module
+- 具有trunk和access口的标准 802.1Q VLAN 功能
+- 上游交换机上连接或不链接LACP的NIC
+- NetFlow, sFlow(R), 及镜像，以提高可视化
+- QoS 配置，加上策列
+- Geneve, GRE, VXLAN, STT, 及 LISP 隧道
+- 802.1ag 连接故障管理
+- OpenFlow 1.0 加大量扩展
+- 具有C和Python绑定的事物配置数据库
+- 使用Linux内核模块的高性能转发
 
-The included Linux kernel module supports Linux 3.10 and up.
+Linux 内核模块支持 Linux 3.10及以上版本。
 
-Open vSwitch can also operate entirely in userspace without assistance from
-a kernel module.  This userspace implementation should be easier to port than
-the kernel-based switch. OVS in userspace can access Linux or DPDK devices.
-Note Open vSwitch with userspace datapath and non DPDK devices is considered
-experimental and comes with a cost in performance.
+Open vSwitch 也可以完全在用户空间运行，无需内核模块协助。
+这个用户空间实现应该比基于内核的交换机更容易进行移植。
+用户空间中的OVS可以访问Linux或DPDK设备。
 
-What's here?
+.. note::
+    
+	使用用户空间实现，且没有用DPDK做加速处理的OVS被认为是测试性的，具有性能成本。
+
+这是什么？
 ------------
 
-The main components of this distribution are:
+OVS的主要组成成分如下：
 
-- ovs-vswitchd, a daemon that implements the switch, along with a companion
-  Linux kernel module for flow-based switching.
-- ovsdb-server, a lightweight database server that ovs-vswitchd queries to
-  obtain its configuration.
-- ovs-dpctl, a tool for configuring the switch kernel module.
-- Scripts and specs for building RPMs for Citrix XenServer and Red Hat
-  Enterprise Linux.  The XenServer RPMs allow Open vSwitch to be installed on a
-  Citrix XenServer host as a drop-in replacement for its switch, with
-  additional functionality.
-- ovs-vsctl, a utility for querying and updating the configuration of
-  ovs-vswitchd.
-- ovs-appctl, a utility that sends commands to running Open vSwitch daemons.
+- ovs-vswitchd, 实现交换机的守护进程，与Linux内核模块共同实现基于流的报文交换。
+- ovsdb-server, 一个轻量级的数据库，ovs-vswitchd 查询以获取其配置信息。
+- ovs-dpctl, 用于配置交换机内核模块的工具。
+- Citrix XenServer and Red Hat Enterprise Linux中用于构建RPM包的脚本和规范。
+  XenServer RPMs 允许将Open vSwitch安装在Citrix XenServer主机上，作为替代其交换机的附加功能。
+- ovs-vsctl, 用于查询和更新 ovs-vswitchd 的配置的实用程序。
+- ovs-appctl, 一个向Open vSwitch守护进程发送命令的程序。
 
-Open vSwitch also provides some tools:
+Open vSwitch 还提供了一些工具：
 
-- ovs-ofctl, a utility for querying and controlling OpenFlow switches and
-  controllers.
-- ovs-pki, a utility for creating and managing the public-key infrastructure
-  for OpenFlow switches.
-- ovs-testcontroller, a simple OpenFlow controller that may be useful for
-  testing (though not for production).
-- A patch to tcpdump that enables it to parse OpenFlow messages.
+- ovs-ofctl, 用于查询和控制OpenFlow交换机和控制器的应用程序。
+- ovs-pki, 用于创建和管理OpenFlow交换机的公钥设施的程序。
+- ovs-testcontroller, 一个简单的OpenFlow控制器，对于测试非常有用(尽管不能用于生产)。
+- tcpdump的补丁，使其能够解析OpenFlow消息。
 
-What other documentation is available?
---------------------------------------
+还有那些可用的文件？
+----------------------
 
 .. TODO(stephenfin): Update with a link to the hosting site of the docs, once
    we know where that is
 
-To install Open vSwitch on a regular Linux or FreeBSD host, please read the
-`installation guide <Documentation/intro/install/general.rst>`__. For specifics
-around installation on a specific platform, refer to one of the `other
-installation guides <Documentation/intro/install/index.rst>`__
+在常规Linux或FreeBSD上安装Open vSwitch请参阅 `installation guide <Documentation/intro/install/general.rst>`__ 。
+特定平台的安装请参阅 `其他安装指南 <Documentation/intro/install/index.rst>`__ 。
 
-For answers to common questions, refer to the `FAQ <Documentation/faq>`__.
+常见问题及解答，请参阅 `FAQ <Documentation/faq>`__.
 
-To learn about some advanced features of the Open vSwitch software switch, read
-the `tutorial <Documentation/tutorials/ovs-advanced.rst>`__.
+了解 Open vSwitch 的一些高级特性，请参阅 `教程 <Documentation/tutorials/ovs-advanced.rst>`__.
 
-Each Open vSwitch userspace program is accompanied by a manpage.  Many of the
-manpages are customized to your configuration as part of the build process, so
-we recommend building Open vSwitch before reading the manpages.
+每个Open vSwitch用户空间程序都附带一个联机帮助页。许多帮助页是自己定义的，作为构建过程的一部分，我们建议您在构建帮助页面之前阅读。
 
 Contact
 -------
