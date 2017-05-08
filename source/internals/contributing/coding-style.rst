@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 =========================
-Open vSwitch Coding Style
+Open vSwitch 编码风格
 =========================
 
 This file describes the coding style used in most C files in the Open vSwitch

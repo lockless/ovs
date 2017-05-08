@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 =============
-Mailing Lists
+邮件列表
 =============
 
 .. important::

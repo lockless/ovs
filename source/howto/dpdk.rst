@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 ============================
-Using Open vSwitch with DPDK
+使用 DPDK 加速 Open vSwitch
 ============================
 
 This document describes how to use Open vSwitch with DPDK datapath.

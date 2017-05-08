@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-======================
-Open vSwitch on NetBSD
-======================
+===========================
+Open vSwitch 安装于 NetBSD
+===========================
 
 On NetBSD, you might want to install requirements from pkgsrc.  In that case,
 you need at least the following packages.

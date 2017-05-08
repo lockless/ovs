@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 ================================
-Design Decisions In Open vSwitch
+Open vSwitch 中的设计策略
 ================================
 
 This document describes design decisions that went into implementing Open

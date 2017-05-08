@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-=====================================
-OVS Committer Grant/Revocation Policy
-=====================================
+==========================
+OVS 提交者 授权/撤销规则
+==========================
 
 An OVS committer is a participant in the project with the ability to commit
 code directly to the master repository. Commit access grants a broad ability to

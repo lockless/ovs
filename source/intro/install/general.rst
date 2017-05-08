@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-=========================================
-Open vSwitch on Linux, FreeBSD and NetBSD
-=========================================
+==================================================
+Open vSwitch 安装于 Linux 系统--FreeBSD 和 NetBSD
+==================================================
 
 This document describes how to build and install Open vSwitch on a generic
 Linux, FreeBSD, or NetBSD host. For specifics around installation on a specific

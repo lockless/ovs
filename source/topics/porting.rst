@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-================================================
-Porting Open vSwitch to New Software or Hardware
-================================================
+=====================================
+Open vSwitch 移植到新的软硬件平台上
+=====================================
 
 Open vSwitch (OVS) is intended to be easily ported to new software and hardware
 platforms.  This document describes the types of changes that are most likely

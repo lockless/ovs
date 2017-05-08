@@ -23,9 +23,9 @@
 
       Avoid deeper levels because they do not render well.
 
-================================
-Open vSwitch Documentation Style
-================================
+=======================
+Open vSwitch 文档风格
+=======================
 
 This file describes the documentation style used in all documentation found in
 Open vSwitch. Documentation includes any documents found in ``Documentation``

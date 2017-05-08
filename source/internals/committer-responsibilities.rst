@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-=========================================================
-Expectations for Developers with Open vSwitch Repo Access
-=========================================================
+========================================
+开发者获得 Open vSwitch Repo 访问权限
+========================================
 
 Pre-requisites
 --------------

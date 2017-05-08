@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-=========================================
-Integration Guide for Centralized Control
-=========================================
+==================
+集中控制集成指南
+==================
 
 This document describes how to integrate Open vSwitch onto a new platform to
 expose the state of the switch and attached devices for centralized control.

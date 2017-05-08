@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-==========================================
-Open vSwitch Windows Datapath Coding Style
-==========================================
+===============================
+Open vSwitch Windows 编码风格
+===============================
 
 The :doc:`coding style <coding-style>` guide gives the flexiblity for each
 platform to use its own coding style for the kernel datapath.  This file

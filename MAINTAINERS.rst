@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 ==========
-Committers
+提交者
 ==========
 
 Open vSwitch committers are the people who have been granted access to push

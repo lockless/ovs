@@ -24,14 +24,14 @@
       Avoid deeper levels because they do not render well.
 
 =====================
-What Is Open vSwitch?
+什么是 Open vSwitch？
 =====================
 
 .. image:: ../_static/overview.png
    :align: center
 
-Overview
---------
+概述
+------
 
 .. NOTE(stephenfin): The below line numbers may need to be updated if the
    README is modified

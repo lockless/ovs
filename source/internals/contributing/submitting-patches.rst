@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-==================
-Submitting Patches
-==================
+==========
+提交补丁 
+==========
 
 Send changes to Open vSwitch as patches to dev@openvswitch.org.  One patch per
 email.  More details are included below.

@@ -24,99 +24,106 @@
       Avoid deeper levels because they do not render well.
 
 ==========================
-Open vSwitch Documentation
+Open vSwitch 文档（中文）
 ==========================
 
-How the Documentation is Organised
-----------------------------------
-
-The Open vSwitch documentation is organised into multiple sections:
-
-- :doc:`Installation guides </intro/install/index>` guide you through
-  installing Open vSwitch (OVS) and Open Virtual Network (OVN) on a variety of
-  different platforms
-- :doc:`Tutorials </tutorials/index>` take you through a series of steps to
-  configure OVS and OVN in sandboxed environments
-- :doc:`Topic guides </topics/index>` provide a high level overview of OVS and
-  OVN internals and operation
-- :doc:`How-to guides </howto/index>` are recipes or use-cases for OVS and OVN.
-  They are more advanced than the tutorials.
-- :doc:`Frequently Asked Questions </faq/index>` provide general insight into
-  a variety of topics related to configuration and operation of OVS and OVN.
-
-First Steps
+文档组织
 -----------
 
-Getting started with Open vSwitch (OVS) or Open Virtual Network (OVN) for Open
-vSwitch? Start here.
+Open vSwitch 文档分成多个部分：
 
-- **Overview:** :doc:`intro/what-is-ovs` |
-  :doc:`intro/why-ovs`
+- :doc:`安装指南 </intro/install/index>` 指导您在各种不同的平台上安装 Open vSwitch (OVS) 和 Open Virtual Network (OVN)。
+- :doc:`教程 </tutorials/index>` 通过一系列步骤，带您在沙箱环境中完成 OVS 和 OVN 的配置。
+- :doc:`主题指南 guides </topics/index>` 提供 OVS 和 OVN 内部部件和操作的高级概述。
+- :doc:`操作指南 </howto/index>` 是 OVS 和 OVN 的操作方法或用例，比教程更高级。
+- :doc:`FAQ </faq/index>` 提供与 OVS 和 OVN 的配置和操作相关的各种主题的一般性了解。
 
-- **Install:** :doc:`intro/install/general` |
-  :doc:`intro/install/userspace` |
-  :doc:`intro/install/netbsd` |
-  :doc:`intro/install/windows` |
-  :doc:`intro/install/xenserver` |
-  :doc:`intro/install/dpdk` |
-  :doc:`Installation FAQs <faq/releases>`
+入门
+------
 
-- **Tutorials:** :doc:`tutorials/ovs-advanced` |
-  :doc:`tutorials/ovn-sandbox` |
-  :doc:`tutorials/ovn-openstack`
+Open vSwitch (OVS) 或 Open Virtual Network (OVN) 入门从这里开始。
 
-Deeper Dive
+- **概述**
+
+    - :doc:`intro/what-is-ovs`
+    - :doc:`intro/why-ovs`
+
+- **安装** 
+    - :doc:`intro/install/general`
+    - :doc:`intro/install/userspace` 
+    - :doc:`intro/install/netbsd` 
+    - :doc:`intro/install/windows` 
+    - :doc:`intro/install/xenserver` 
+    - :doc:`intro/install/dpdk` 
+    - :doc:`常见安装问题与解答 <faq/releases>`
+
+- **教程** 
+    - :doc:`tutorials/ovs-advanced` 
+    - :doc:`tutorials/ovn-sandbox` 
+    - :doc:`tutorials/ovn-openstack`
+
+深入
+------
+
+- **架构**
+    - :doc:`topics/design` 
+    - :doc:`topics/openflow` 
+    - :doc:`topics/integration` 
+    - :doc:`topics/porting`
+
+- **DPDK**
+    - :doc:`howto/dpdk` 
+    - :doc:`topics/dpdk/vhost-user`
+
+- **Windows**
+    - :doc:`topics/windows`
+
+- **集成**
+    - :doc:`topics/language-bindings`
+
+- **参考指南**
+    - :doc:`ref/index`
+
+- **测试**
+    - :doc:`topics/testing`
+
+- **打包**
+    - :doc:`intro/install/debian` 
+    - :doc:`intro/install/rhel` 
+    - :doc:`intro/install/fedora`
+
+Open vSwitch 项目
+-------------------
+
+了解有关Open vSwitch项目的更多信息以及如何参与贡献：
+
+- **社区**
+    - :doc:`internals/release-process` 
+    - :doc:`internals/authors` 
+    - :doc:`internals/mailing-lists` 
+    - :doc:`internals/patchwork` 
+    - :doc:`internals/bugs` 
+    - :doc:`internals/security`
+
+- **贡献**
+    - :doc:`internals/contributing/submitting-patches` 
+    - :doc:`internals/contributing/backporting-patches` 
+    - :doc:`internals/contributing/coding-style` 
+    - :doc:`internals/contributing/coding-style-windows`
+
+- **维护**
+    - :doc:`internals/maintainers` 
+    - :doc:`internals/committer-responsibilities` 
+    - :doc:`internals/committer-grant-revocation`
+
+- **文档**
+    - :doc:`internals/contributing/documentation-style` 
+    - :doc:`构建 Open vSwitch 文档 <intro/install/documentation>` 
+    - :doc:`internals/documentation`
+
+获取帮助
 -----------
 
-- **Architecture** :doc:`topics/design` |
-  :doc:`topics/openflow` |
-  :doc:`topics/integration` |
-  :doc:`topics/porting`
+- 发现潜在的错误或bug？提交到 bugs@openvswitch.org。
 
-- **DPDK** :doc:`howto/dpdk` |
-  :doc:`topics/dpdk/vhost-user`
-
-- **Windows** :doc:`topics/windows`
-
-- **Integrations:** :doc:`topics/language-bindings`
-
-- **Reference Guides:** :doc:`ref/index`
-
-- **Testing** :doc:`topics/testing`
-
-- **Packaging:** :doc:`intro/install/debian` |
-  :doc:`intro/install/rhel` |
-  :doc:`intro/install/fedora`
-
-The Open vSwitch Project
-------------------------
-
-Learn more about the Open vSwitch project and about how you can contribute:
-
-- **Community:** :doc:`internals/release-process` |
-  :doc:`internals/authors` |
-  :doc:`internals/mailing-lists` |
-  :doc:`internals/patchwork` |
-  :doc:`internals/bugs` |
-  :doc:`internals/security`
-
-- **Contributing:** :doc:`internals/contributing/submitting-patches` |
-  :doc:`internals/contributing/backporting-patches` |
-  :doc:`internals/contributing/coding-style` |
-  :doc:`internals/contributing/coding-style-windows`
-
-- **Maintaining:** :doc:`internals/maintainers` |
-  :doc:`internals/committer-responsibilities` |
-  :doc:`internals/committer-grant-revocation`
-
-- **Documentation:** :doc:`internals/contributing/documentation-style` |
-  :doc:`Building Open vSwitch Documentation <intro/install/documentation>` |
-  :doc:`internals/documentation`
-
-Getting Help
--------------
-
-- Seeing an issue of potential bug? Report problems to bugs@openvswitch.org
-
-- Looking for specific information? Try the :ref:`genindex`, :ref:`modindex` or
-  the :doc:`detailed table of contents <contents>`.
+- 查找详细资料? 试试 :ref:`genindex`, :ref:`modindex` 或 :doc:`detailed table of contents <contents>`。

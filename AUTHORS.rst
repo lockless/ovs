@@ -22,7 +22,7 @@
       Avoid deeper levels because they do not render well.
 
 =======
-Authors
+作者
 =======
 
 The following people authored or signed off on commits in the Open

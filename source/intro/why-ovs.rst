@@ -21,9 +21,9 @@
 
       Avoid deeper levels because they do not render well.
 
-=================
-Why Open vSwitch?
-=================
+=========================
+为什么选择 Open vSwitch？
+=========================
 
 Hypervisors need the ability to bridge traffic between VMs and with the outside
 world. On Linux-based hypervisors, this used to mean using the built-in L2
