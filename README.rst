@@ -67,8 +67,8 @@ Open vSwitch 还提供了一些工具：
 .. TODO(stephenfin): Update with a link to the hosting site of the docs, once
    we know where that is
 
-在常规Linux或FreeBSD上安装Open vSwitch请参阅 `installation guide <Documentation/intro/install/general.rst>`__ 。
-特定平台的安装请参阅 `其他安装指南 <Documentation/intro/install/index.rst>`__ 。
+在常规Linux或FreeBSD上安装Open vSwitch请参阅 `安装指南 <Documentation/intro/install/general.rst>`__ 。
+其他特定平台的安装请参阅 `其他安装指南 <Documentation/intro/install/index.rst>`__ 。
 
 常见问题及解答，请参阅 `FAQ <Documentation/faq>`__.
 
@@ -76,7 +76,7 @@ Open vSwitch 还提供了一些工具：
 
 每个Open vSwitch用户空间程序都附带一个联机帮助页。许多帮助页是自己定义的，作为构建过程的一部分，我们建议您在构建帮助页面之前阅读。
 
-Contact
--------
+联系我们
+---------
 
 bugs@openvswitch.org
