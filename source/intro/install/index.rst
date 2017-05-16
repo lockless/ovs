@@ -23,15 +23,14 @@
 
       Avoid deeper levels because they do not render well.
 
-=======================
-Installing Open vSwitch
-=======================
+=====================
+安装 Open vSwitch
+=====================
 
-A collection of guides detailing how to install Open vSwitch in a variety of
-different environments and using different configurations.
+详细介绍了如何在各种不同的环境中安装 Open vSwitch 及使用不同的配置。
 
-Installation from Source
-------------------------
+通过源码安装
+---------------
 
 .. TODO(stephenfin): Based on the title alone, the NetBSD doc should probably
    be merged into the general install doc

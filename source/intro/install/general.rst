@@ -25,108 +25,84 @@
 Open vSwitch 安装于 Linux 系统--FreeBSD 和 NetBSD
 ==================================================
 
-This document describes how to build and install Open vSwitch on a generic
-Linux, FreeBSD, or NetBSD host. For specifics around installation on a specific
-platform, refer to one of the other installation guides listed in :doc:`index`.
+本文档介绍如何在通用的 Linux，FreeBSD 或 NetBSD 主机上构建和安装 Open vSwitch。
+其他特定平台上的安装信息，请参阅  :doc:`index` 中列出的其他安装指南。
 
-Obtaining Open vSwitch Sources
-------------------------------
+获取 Open vSwitch 源码
+------------------------
 
-The canonical location for Open vSwitch source code is its Git
-repository, which you can clone into a directory named "ovs" with::
+Open vSwitch 源码可以在其 Git 库中下载，使用如下命令::
 
     $ git clone https://github.com/openvswitch/ovs.git
 
-Cloning the repository leaves the "master" branch initially checked
-out.  This is the right branch for general development.  If, on the
-other hand, if you want to build a particular released version, you
-can check it out by running a command such as the following from the
-"ovs" directory::
+请从 "master" 分支中开出，这是当前正在开发的最新代码。
+当然，如果你需要一个已经发布的版本，也可以参照如下命令，下载指定版本的代码::
 
     $ git checkout v2.7.0
 
-The repository also has a branch for each release series.  For
-example, to obtain the latest fixes in the Open vSwitch 2.7.x release
-series, which might include bug fixes that have not yet been in any
-released version, you can check it out from the "ovs" directory with::
+代码库还为每个版本系列分配一个分支。
+例如，要获取 Open vSwitch 2.7.x 发布版本的最新修订程序，这些修订可能包含在最新的发布版本中未修订的bug，
+你可以使用如下命令::
 
     $ git checkout origin/branch-2.7
 
-If you do not want to use Git, you can also obtain tarballs for Open
-vSwitch release versions via http://openvswitch.org/download/, or
-download a ZIP file for any snapshot from the web interface at
-https://github.com/openvswitch/ovs.
+如果不想使用 Git，你可以通过 http://openvswitch.org/download/ 获取Open vSwitch发布版本的压缩包，
+或者从 https://github.com/openvswitch/ovs 的Web界面下载。
 
 .. _general-build-reqs:
 
-Build Requirements
-------------------
+构建依赖
+----------
 
-To compile the userspace programs in the Open vSwitch distribution, you will
-need the following software:
+要在 Open vSwitch 发行版本环境中编译用户空间程序，你可能需要如下软件：
 
 - GNU make
 
-- A C compiler, such as:
+- C 编译器，如：
 
-  - GCC 4.6 or later.
+  - GCC 4.6 及以上版本
 
-  - Clang 3.4 or later.
+  - Clang 3.4 及以上版本
 
-  - MSVC 2013. Refer to :doc:`windows` for additional Windows build
-    instructions.
+  - MSVC 2013，参考 :doc:`windows` 获取更多 Windows 环境构建说明。
 
-  While OVS may be compatible with other compilers, optimal support for atomic
-  operations may be missing, making OVS very slow (see ``lib/ovs-atomic.h``).
+  .. note::
 
-- libssl, from OpenSSL, is optional but recommended if you plan to connect the
-  Open vSwitch to an OpenFlow controller. libssl is required to establish
-  confidentiality and authenticity in the connections from an Open vSwitch to
-  an OpenFlow controller. If libssl is installed, then Open vSwitch will
-  automatically build with support for it.
+    虽然OVS可能与其他编译器兼容，但是对原子操作的最佳支持可能丢失，从而使得OVS非常慢（参考 ``lib/ovs-atomic.h`` ）.
 
-- libcap-ng, written by Steve Grubb, is optional but recommended. It is
-  required to run OVS daemons as a non-root user with dropped root privileges.
-  If libcap-ng is installed, then Open vSwitch will automatically build with
-  support for it.
+- libssl，来自OpenSSL，可选库，但是如果打算将 Open vSwitch 连接到 OpenFlow 控制器，则建议使用。
+  这种情况需要使用 libssl 在 Open vSwitch 和 OpenFlow 控制器的连接中建立机密性和真实性。
+  如果安装了 libssl，那么 Open vSwitch 将自动构建并支持它。
 
-- Python 2.7. You must also have the Python ``six`` library version 1.4.0
-  or later.
+- libcap-ng，由 Steve Grubb 编写，是可选的，但是建议使用。
+  需要以具有非root权限的用户运行OVS守护进程，
+  如果安装了 libcap-ng，那么 Open vSwitch 将自动构建并支持它。
+
+- Python 2.7，还必须使用 Python 库1.4.0或更高的版本。
 
 
-On Linux, you may choose to compile the kernel module that comes with the Open
-vSwitch distribution or to use the kernel module built into the Linux kernel
-(version 3.3 or later). See the :doc:`/faq/index` question "What features are
-not available in the Open vSwitch kernel datapath that ships as part of the
-upstream Linux kernel?" for more information on this trade-off. You may also
-use the userspace-only implementation, at some cost in features and
-performance. Refer to :doc:`userspace` for details.
+在 Linux 中，你可以选择编译 Open vSwitch 发布版本中附带的内核模块，或者使用Linux内核(3.3或更高版本)中内置的内核模块。
+参阅 :doc:`/faq/index` 中描述的问题 "Open vSwitch 内核数据路径中哪些功能不是Linux内核原生的一部分?"获取更多的信息。
+你还可以仅使用用户空间实现，当然，需要以功能或性能上的某些消耗代价。参阅 :doc:`userspace` 获取更多信息。
 
-To compile the kernel module on Linux, you must also install the
-following:
+要在Linux上编译内核模块，你还需要安装如下内容：
 
-- A supported Linux kernel version.
+- 支持的Linux内核版本
 
-  For optional support of ingress policing, you must enable kernel
-  configuration options ``NET_CLS_BASIC``, ``NET_SCH_INGRESS``, and
-  ``NET_ACT_POLICE``, either built-in or as modules. ``NET_CLS_POLICE`` is
-  obsolete and not needed.)
+  不论是内置还是作为独立模块，为了支持ingress policing，必须使能内核配置选项 ``NET_CLS_BASIC`` 、 ``NET_SCH_INGRESS`` 和 ``NET_ACT_POLICE`` 。
+  ``NET_CLS_POLICE`` 已经过时了，现在已经不再使用。
 
-  On kernels before 3.11, the ``ip_gre`` module, for GRE tunnels over IP
-  (``NET_IPGRE``), must not be loaded or compiled in.
+  在内核3.11以前的版本， ``ip_gre`` 模块，用于支持 GRE tunnels over IP
+  (``NET_IPGRE``)，不能加载或编译。
 
-  To configure HTB or HFSC quality of service with Open vSwitch, you must
-  enable the respective configuration options.
+  要使用Open vSwitch配置 HTB 或 HFSC 服务质量，必须使能相应的配置选项。
 
-  To use Open vSwitch support for TAP devices, you must enable ``CONFIG_TUN``.
+  要为TAP设备开启Open vSwitch支持，需要配置 ``CONFIG_TUN`` 。
 
-- To build a kernel module, you need the same version of GCC that was used to
-  build that kernel.
+- 要构建一个内核模块，你需要用于构建该内核的GCC版本。
 
-- A kernel build directory corresponding to the Linux kernel image the module
-  is to run on. Under Debian and Ubuntu, for example, each linux-image package
-  containing a kernel binary has a corresponding linux-headers package with
-  the required build infrastructure.
+- 内核构建目录，对应于该模块要运行的Linux内核镜像。
+  例如，在Debian 和 Ubuntu中，包含内核二进制程序的linux-image软件包都具有相应的所需构建基础架构的Linux头文件包。
 
 If you are working from a Git tree or snapshot (instead of from a distribution
 tarball), or if you modify the Open vSwitch build system or the database
