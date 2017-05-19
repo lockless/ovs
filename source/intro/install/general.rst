@@ -104,76 +104,59 @@ Open vSwitch 源码可以在其 Git 库中下载，使用如下命令::
 - 内核构建目录，对应于该模块要运行的Linux内核镜像。
   例如，在Debian 和 Ubuntu中，包含内核二进制程序的linux-image软件包都具有相应的所需构建基础架构的Linux头文件包。
 
-If you are working from a Git tree or snapshot (instead of from a distribution
-tarball), or if you modify the Open vSwitch build system or the database
-schema, you will also need the following software:
+如果使用 Git 目录开发（而不是代码压缩包），后者你需要修改 Open vSwitch 构建系统及数据库架构，那么还需要如下软件：
 
-- Autoconf version 2.63 or later.
+- Autoconf 2.63 及更新版本。
 
-- Automake version 1.10 or later.
+- Automake 1.10 及更新版本。
 
-- libtool version 2.4 or later. (Older versions might work too.)
+- libtool 2.4 及更新版本。(老版本或许也能正常工作)
 
-To run the unit tests, you also need:
+如果要运行测试单元，需要：
 
-- Perl. Version 5.10.1 is known to work. Earlier versions should also
-  work.
+- Perl. 版本 5.10.1 是已知的可以正常工作的版本。早期版本也可以正常工作。
 
-The datapath tests for userspace and Linux datapaths also rely upon:
+用户空间及Linux内核数据路径测试还依赖于：
 
-- pyftpdlib. Version 1.2.0 is known to work. Earlier versions should
-  also work.
+- pyftpdlib. 版本 1.2.0。早期版本可能也能正常工作。
 
-- GNU wget. Version 1.16 is known to work. Earlier versions should also
-  work.
+- GNU wget. 版本 1.16。早期版本可能也能正常工作。
 
-- netcat. Several common implementations are known to work.
+- netcat，常见的几种实现方式都可以使用。
 
-- curl. Version 7.47.0 is known to work. Earlier versions should also work.
+- curl. 版本 7.47.0。早期的版本也可以工作。
 
-- tftpy. Version 0.6.2 is known to work. Earlier versions should also work.
+- tftpy. 版本 0.6.2。早期的版本也可以工作。
 
-The ovs-vswitchd.conf.db(5) manpage will include an E-R diagram, in formats
-other than plain text, only if you have the following:
+ovs-vswitchd.conf.db 联机帮助页面将包含除文本之外的 E-R 图，只需要安装如下软件：
 
-- dot from graphviz (http://www.graphviz.org/).
+- dot 来自 graphviz (http://www.graphviz.org/)
 
-- Perl. Version 5.10.1 is known to work. Earlier versions should also
-  work.
+- Perl. 版本 5.10.1。早期的版本也可以工作。
 
-If you are going to extensively modify Open vSwitch, consider installing the
-following to obtain better warnings:
+如果需要大量修改 Open vSwitch，请安装如下软件以获取更好的提示：
 
-- "sparse" version 0.4.4 or later
-  (https://www.kernel.org/pub/software/devel/sparse/dist/).
+- "sparse" 0.4.4 或更新的版本(https://www.kernel.org/pub/software/devel/sparse/dist/)
 
-- GNU make.
+- GNU make
 
-- clang, version 3.4 or later
+- clang, 3.4 或更新的版本
 
-- flake8 along with the hacking flake8 plugin (for Python code). The automatic
-  flake8 check that runs against Python code has some warnings enabled that
-  come from the "hacking" flake8 plugin. If it's not installed, the warnings
-  just won't occur until it's run on a system with "hacking" installed.
+- flake8 及 flake8 插件 (用于Python代码)。针对Python代码运行自动 flake8 检查启用了一些来自插件的警告选项。如果没有安装，只有在安装了 "hacking" 的系统上才会有警告提示。
 
-You may find the ovs-dev script found in ``utilities/ovs-dev.py`` useful.
+你可能会发现 ``utilities/ovs-dev.py`` 中的ovs-dev脚本很有帮助。
 
 .. _general-install-reqs:
 
-Installation Requirements
--------------------------
+安装依赖
+----------
 
-The machine you build Open vSwitch on may not be the one you run it on. To
-simply install and run Open vSwitch you require the following software:
+你用来构建 Open vSwitch 的设备可能并不是 Open vSwitch真正要运行的设备。
+要简单的安装并运行 Open vSwitch，你需要如下软件：
 
-- Shared libraries compatible with those used for the build.
+- 与构建设备兼容的共享库。
 
-- On Linux, if you want to use the kernel-based datapath (which is the most
-  common use case), then a kernel with a compatible kernel module.  This
-  can be a kernel module built with Open vSwitch (e.g. in the previous
-  step), or the kernel module that accompanies Linux 3.3 and later.  Open
-  vSwitch features and performance can vary based on the module and the
-  kernel.  Refer to :doc:`/faq/releases` for more information.
+- 在Linux上，如果要使用基于内核的datapath（这是最常见的用例），那么内核就要有一个兼容的模块。这可以是使用Open vSwitch构建的内核模块（例如上一步），也可以是Linux 3.3及更高版本所附带的内核模块。Open vSwitch 功能和性能可能会因模块和内核而异。有关更多信息，请参阅 :doc:`/faq/releases` 。
 
 - For optional support of ingress policing on Linux, the "tc" program
   from iproute2 (part of all major distributions and available at
