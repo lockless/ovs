@@ -162,84 +162,72 @@ ovs-vswitchd.conf.db 联机帮助页面将包含除文本之外的 E-R 图，只
   from iproute2 (part of all major distributions and available at
   https://wiki.linuxfoundation.org/networking/iproute2).
 
-- Python 2.7. You must also have the Python six library version 1.4.0
-  or later.
+- Python 2.7，同时必须有 Python six library 1.4.0版本或更新版本。
 
-On Linux you should ensure that ``/dev/urandom`` exists. To support TAP
-devices, you must also ensure that ``/dev/net/tun`` exists.
+在Linux上，必须保证 ``/dev/urandom`` 文件存在。为了支持 TAP 设备，必须保证 ``/dev/net/tun`` 文件存在。
 
 .. _general-bootstrapping:
 
-Bootstrapping
--------------
+引导
+------
 
-This step is not needed if you have downloaded a released tarball. If
-you pulled the sources directly from an Open vSwitch Git tree or got a
-Git tree snapshot, then run boot.sh in the top source directory to build
-the "configure" script::
+假如你已经下载了发布版本压缩包，这一步可以省略。
+如果是直接从 Open vSwitch Git 树中获取源代码，或者获得 Git 树快照，则需要在顶层目录中运行脚本 boot.sh 以构建 "configure" 脚本::
 
     $ ./boot.sh
 
 .. _general-configuring:
 
-Configuring
------------
+配置
+------
 
-Configure the package by running the configure script. You can usually
-invoke configure without any arguments. For example::
+通过运行 configure 脚本来配置软件。
+运行 configure 脚本通常可以不加任何参数。如::
 
     $ ./configure
 
-By default all files are installed under ``/usr/local``. Open vSwitch also
-expects to find its database in ``/usr/local/etc/openvswitch`` by default. If
-you want to install all files into, e.g., ``/usr`` and ``/var`` instead of
-``/usr/local`` and ``/usr/local/var`` and expect to use ``/etc/openvswitch`` as
-the default database directory, add options as shown here::
+默认情况下，所有文件都安装在 ``/usr/local`` 。
+默认情况下，Open vSwitch 也期望在 ``/usr/local/etc/openvswitch`` 中存储其数据库。
+如果需要将文件安装到其他目录，如 ``/usr`` 及 ``/var`` 来替换默认的 ``/usr/local`` 和 ``/usr/local/var`` ，
+且期望将 ``/etc/openvswitch`` 作为默认的数据库目录，添加如下的配置选项::
 
     $ ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc
 
 .. note::
 
-  Open vSwitch installed with packages like .rpm (e.g. via ``yum install`` or
-  ``rpm -ivh``) and .deb (e.g. via ``apt-get install`` or ``dpkg -i``) use the
-  above configure options.
+  Open vSwitch 使用上面的配置选项，通过安装包来安装，类似于 .rpm (如通过命令 ``yum install`` 或 ``rpm -ivh``) 和
+  .deb (如通过命令 ``apt-get install`` 或 ``dpkg -i``)。
 
-By default, static libraries are built and linked against. If you want to use
-shared libraries instead::
+默认情况下，建立静态库并将其链接起来。
+如果想要使用共享库::
 
     $ ./configure --enable-shared
 
-To use a specific C compiler for compiling Open vSwitch user programs, also
-specify it on the configure command line, like so::
+如果要使用特定的 C 编译器来编译 Open vSwitch 用户程序，需要在 configure 命令中指定，如::
 
     $ ./configure CC=gcc-4.2
 
-To use 'clang' compiler::
+如果要使用 'clang' 编译器::
 
     $ ./configure CC=clang
 
-To supply special flags to the C compiler, specify them as ``CFLAGS`` on the
-configure command line. If you want the default CFLAGS, which include ``-g`` to
-build debug symbols and ``-O2`` to enable optimizations, you must include them
-yourself. For example, to build with the default CFLAGS plus ``-mssse3``, you
-might run configure as follows::
+要想 C 编译器提供特殊的标志，请添加 ``CFLAGS`` 到 configure 命令行中。
+如果想要使用 CFLAGS，包括 ``-g`` 以创建调试符号及 ``-O2`` 以启用优化，必须自己在命令行中指定。
+例如，用 CFLAGS 包括 ``-mssse3`` 来构建，需要运行如下命令::
 
     $ ./configure CFLAGS="-g -O2 -mssse3"
 
-For efficient hash computation special flags can be passed to leverage built-in
-intrinsics. For example on X86_64 with SSE4.2 instruction set support, CRC32
-intrinsics can be used by passing ``-msse4.2``::
+为了使用高效的哈希计算，可以提供特殊的 flags 来使用内建函数。
+例如，在支持 SSE4.2 指令集的 X86_64 上，CRC32 函数可以通过传递 ``-msse4.2``::
 
     $ ./configure CFLAGS="-g -O2 -msse4.2"`
 
-If you are on a different processor and don't know what flags to choose, it is
-recommended to use ``-march=native`` settings::
+如果你使用不同的处理器，不知道要选择什么 flags，建议使用 ``-march=native`` 设置::
 
     $ ./configure CFLAGS="-g -O2 -march=native"
 
-With this, GCC will detect the processor and automatically set appropriate
-flags for it. This should not be used if you are compiling OVS outside the
-target machine.
+这样，GCC 将检测处理器并自动设置适当的标志。
+如果您在目标计算机外编译 OVS，则不应使用此方法。
 
 .. note::
   CFLAGS are not applied when building the Linux kernel module. Custom CFLAGS
